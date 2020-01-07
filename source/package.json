@@ -1,0 +1,41 @@
+{
+  "name": "spotify-gateway",
+  "version": "1.0.0",
+  "main": "server.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "npm run build:dev",
+    "build:dev": "nodemon src/server.ts --exec ts-node src/server.ts -e ts,graphql",
+    "generate": "graphql-codegen",
+    "codegen": "graphql-codegen --config codegen.yml"
+  },
+  "dependencies": {
+    "@types/isomorphic-fetch": "0.0.35",
+    "@types/lodash": "^4.14.136",
+    "@types/node-fetch": "^2.5.0",
+    "apollo-boost": "^0.4.7",
+    "apollo-server": "^2.8.1",
+    "es6-promise": "^4.2.8",
+    "esm": "^3.2.25",
+    "graphql": "^14.4.2",
+    "graphql-import": "^0.7.1",
+    "graphql-tag": "^2.10.1",
+    "graphql-tool": "^1.0.0",
+    "graphql-toolkit": "^0.5.10",
+    "graphql-tools": "^4.0.5",
+    "isomorphic-fetch": "^2.2.1",
+    "lodash": "^4.17.15",
+    "moment": "^2.24.0",
+    "node-fetch": "^2.6.0",
+    "portable-fetch": "^3.0.0"
+  },
+  "devDependencies": {
+    "@graphql-codegen/core": "^1.6.1",
+    "@graphql-codegen/introspection": "1.6.1",
+    "@graphql-codegen/typescript": "1.6.1",
+    "@graphql-codegen/typescript-resolvers": "1.6.1",
+    "nodemon": "^1.19.1",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.3"
+  }
+}

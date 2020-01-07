@@ -1,0 +1,226 @@
+"""
+After changes be sure to run command (defined in package.json):
+    yarn codegen
+This will update the generated typescript schema
+"""
+
+type Query {
+  searchAll (args: SearchInput!): SearchAllResponse
+  searchArtist (args: SearchInput!): SearchArtistResponse
+  searchAlbum (args: SearchInput!): SearchAlbumResponse
+  searchTrack (args: SearchInput!): SearchTrackResponse
+  getArtistById (args: GetItemInput!): GetArtistResponse
+  getAlbumById (args: GetItemInput!): GetAlbumResponse
+  getTrackById (args: GetItemInput!): GetTrackItemResponse
+  getTracks (args: GetTracksInput!): GetTracksResponse
+  getArtistTopTracks (args: GetArtistTopTracksInput!): GetArtistTopTracksResponse
+  getArtistAlbums (args: GetItemInput!): GetArtistAlbumsResponse
+  getAlbumTracks (args: GetAlbumTracksInput!): GetTrackResponse
+}
+
+input SearchInput {
+    name: String!
+    limit: Int!
+}
+
+type SearchAllResponse {
+    options: String
+    data: SearchAll
+}
+
+type SearchArtistResponse {
+    options: String
+    data: [Artist]
+}
+
+type SearchAlbumResponse {
+    options: String
+    data: [Album]
+}
+
+type SearchTrackResponse {
+    options: String
+    data: [Track]
+}
+
+input GetItemInput {
+    id: String!
+}
+
+input GetTracksInput {
+    ids: [String!]!
+}
+
+type GetArtistResponse {
+    options: String
+    data: ArtistItem
+}
+
+type GetAlbumResponse {
+    options: String
+    data: AlbumItem
+}
+
+type GetTrackResponse {
+    options: String
+    data: Track
+}
+
+type GetTrackItemResponse {
+    options: String
+    data: TrackItem
+}
+
+type GetTracksResponse {
+    options: String
+    data: [TrackItem]
+}
+
+input GetArtistTopTracksInput {
+    id: String!
+    country: String!
+}
+
+type GetArtistTopTracksResponse {
+    options: String
+    data: [TrackItem]
+}
+
+type GetArtistAlbumsResponse {
+    options: String
+    data: Album
+}
+
+input GetAlbumTracksInput {
+    id: String!
+    limit: Int
+}
+
+type Artist {
+    href:     String
+    items:    [ArtistItem]
+    limit:    Int
+    next:     String
+    offset:   Int
+    previous: String
+    total:    Int
+}
+
+type Album {
+    href:     String
+    items:    [AlbumItem]
+    limit:    Int
+    next:     String
+    offset:   Int
+    previous: String
+    total:    Int
+}
+
+type Track {
+    href:     String
+    items:    [TrackItem]
+    limit:    Int
+    next:     String
+    offset:   Int
+    previous: String
+    total:    Int
+}
+
+type ArtistItem {
+    external_urls: ExternalUrls
+    followers:    Followers
+    genres:       [String]
+    href:         String
+    id:           String
+    images:       [Image]
+    name:         String
+    popularity:   Int
+    type:         String
+    uri:          String
+}
+
+type ArtistBasicItem {
+    external_urls: ExternalUrls
+    href:         String
+    id:           String
+    name:         String
+    type:         String
+    uri:          String
+}
+
+type AlbumItem {
+    album_type:             String
+    artists:                [ArtistBasicItem]
+    available_markets:      [String]
+    external_urls:          ExternalUrls
+    href:                   String
+    id:                     String
+    images:                 [Image]
+    name:                   String
+    release_date:           String
+    release_date_precision: String
+    total_tracks:           Int
+    type:                   String
+    uri:                    String
+}
+
+type TrackItem {
+    album:              AlbumItem
+    artists:            [ArtistBasicItem]
+    available_markets:  [String]
+    disc_number:        Int
+    duration_ms:        Int
+    explicit:           Boolean
+    external_ids:       external_ids
+    external_urls:      ExternalUrls
+    href:               String
+    id:                 String
+    is_local:           Boolean
+    is_playable:        Boolean
+    name:               String
+    popularity:         Int
+    preview_url:        String
+    track_number:       Int
+    type:               String
+    uri:                String
+}
+
+type SearchAll {
+    albums:  Album
+    artists: Artist
+    tracks:  Track
+}
+
+type ExternalUrls {
+    spotify: String
+}
+
+type external_ids {
+    isrc: String
+}
+
+type Followers {
+    href:  String
+    total: Int
+}
+
+type Image {
+    height: Int
+    url:    String
+    width:  Int
+}
+
+"""auth"""
+input GetAccessTokenInput {
+    client_id:    String!
+    scopes:       [String!]!
+    redirect_uri: String
+    state:        String
+}
+
+type GetAuthorizationResponse {
+    access_token: String!
+    token_type:   String!
+    expires_in:   Int!
+    scope:        String
+}

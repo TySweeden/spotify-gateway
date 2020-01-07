@@ -1,0 +1,28 @@
+version: '3.6'
+services:
+  spotify-postgres:
+    image: postgres
+    container_name: spotify_postgres
+    restart: always
+    volumes:
+    - db_data1:/var/lib/postgresql/data
+    ports:
+    - "5433:5432"
+  spotify-graphql:
+    image: hasura/graphql-engine:v1.0.0-beta.6
+    container_name: spotify_graphql
+    ports:
+    - "8081:8080"
+    depends_on:
+    - "spotify-postgres"
+    restart: always
+    environment:
+      HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:@spotify-postgres:5432/postgres
+      HASURA_GRAPHQL_ENABLE_CONSOLE: "true" # set to "false" to disable console
+      HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
+      SPOTIFY_GATEWAY_ENDPOINT: http://host.docker.internal:4200/v1/graphql
+      #WMS_API_ENDPOINT: http://host.docker.internal:5000/v1/graphql
+      ## uncomment next line to set an admin secret
+      # HASURA_GRAPHQL_ADMIN_SECRET: myadminsecretkey
+volumes:
+  db_data1:
