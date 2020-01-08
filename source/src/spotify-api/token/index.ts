@@ -1,11 +1,11 @@
-import * as config from '../../../static/config.json'
+import * as config from '../../../static/config.json';
 
 /*
     authorize with clientId >> get access_token
     request refresh token with access_token >> gets access_token and refresh_token
 */
 
-export const getAuthorization = async (authorizationRequest: any = { scopes: "user-read-private user-read-email" }) => {
+export const getAuthorization = async (authorizationRequest: any = { scopes: "user-modify-playback-state user-read-playback-state user-read-private user-read-email" }) => {
     console.log("Get Client Access Token");
 
     var authResponse = undefined;

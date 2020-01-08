@@ -12,3 +12,5 @@ export * from './albums/getAlbumTracks';
 
 export * from './tracks/getTrackById';
 export * from './tracks/getTracks';
+
+export * from './player/getCurrentlyPlaying';

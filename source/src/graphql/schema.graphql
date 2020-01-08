@@ -16,6 +16,7 @@ type Query {
   getArtistTopTracks (args: GetArtistTopTracksInput!): GetArtistTopTracksResponse
   getArtistAlbums (args: GetItemInput!): GetArtistAlbumsResponse
   getAlbumTracks (args: GetAlbumTracksInput!): GetTrackResponse
+  getCurrentlyPlaying: GetCurrentlyPlayingResponse
 }
 
 input SearchInput {
@@ -94,6 +95,11 @@ type GetArtistAlbumsResponse {
 input GetAlbumTracksInput {
     id: String!
     limit: Int
+}
+
+type GetCurrentlyPlayingResponse {
+    options: String
+    data: TrackItem
 }
 
 type Artist {

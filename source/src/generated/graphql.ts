@@ -139,6 +139,12 @@ export type GetAuthorizationResponse = {
   scope?: Maybe<Scalars['String']>,
 };
 
+export type GetCurrentlyPlayingResponse = {
+  __typename?: 'GetCurrentlyPlayingResponse',
+  options?: Maybe<Scalars['String']>,
+  data?: Maybe<TrackItem>,
+};
+
 export type GetItemInput = {
   id: Scalars['String'],
 };
@@ -190,6 +196,7 @@ export type Query = {
   getArtistTopTracks?: Maybe<GetArtistTopTracksResponse>,
   getArtistAlbums?: Maybe<GetArtistAlbumsResponse>,
   getAlbumTracks?: Maybe<GetTrackResponse>,
+  getCurrentlyPlaying?: Maybe<GetCurrentlyPlayingResponse>,
 };
 
 
@@ -473,6 +480,7 @@ export type ResolversTypes = {
   GetArtistAlbumsResponse: ResolverTypeWrapper<GetArtistAlbumsResponse>,
   GetAlbumTracksInput: GetAlbumTracksInput,
   GetTrackResponse: ResolverTypeWrapper<GetTrackResponse>,
+  GetCurrentlyPlayingResponse: ResolverTypeWrapper<GetCurrentlyPlayingResponse>,
   GetAccessTokenInput: GetAccessTokenInput,
   GetAuthorizationResponse: ResolverTypeWrapper<GetAuthorizationResponse>,
 };
@@ -511,6 +519,7 @@ export type ResolversParentTypes = {
   GetArtistAlbumsResponse: GetArtistAlbumsResponse,
   GetAlbumTracksInput: GetAlbumTracksInput,
   GetTrackResponse: GetTrackResponse,
+  GetCurrentlyPlayingResponse: GetCurrentlyPlayingResponse,
   GetAccessTokenInput: GetAccessTokenInput,
   GetAuthorizationResponse: GetAuthorizationResponse,
 };
@@ -613,6 +622,11 @@ export type GetAuthorizationResponseResolvers<ContextType = any, ParentType exte
   scope?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
 };
 
+export type GetCurrentlyPlayingResponseResolvers<ContextType = any, ParentType extends ResolversParentTypes['GetCurrentlyPlayingResponse'] = ResolversParentTypes['GetCurrentlyPlayingResponse']> = {
+  options?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  data?: Resolver<Maybe<ResolversTypes['TrackItem']>, ParentType, ContextType>,
+};
+
 export type GetTrackItemResponseResolvers<ContextType = any, ParentType extends ResolversParentTypes['GetTrackItemResponse'] = ResolversParentTypes['GetTrackItemResponse']> = {
   options?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
   data?: Resolver<Maybe<ResolversTypes['TrackItem']>, ParentType, ContextType>,
@@ -646,6 +660,7 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
   getArtistTopTracks?: Resolver<Maybe<ResolversTypes['GetArtistTopTracksResponse']>, ParentType, ContextType, RequireFields<QueryGetArtistTopTracksArgs, 'args'>>,
   getArtistAlbums?: Resolver<Maybe<ResolversTypes['GetArtistAlbumsResponse']>, ParentType, ContextType, RequireFields<QueryGetArtistAlbumsArgs, 'args'>>,
   getAlbumTracks?: Resolver<Maybe<ResolversTypes['GetTrackResponse']>, ParentType, ContextType, RequireFields<QueryGetAlbumTracksArgs, 'args'>>,
+  getCurrentlyPlaying?: Resolver<Maybe<ResolversTypes['GetCurrentlyPlayingResponse']>, ParentType, ContextType>,
 };
 
 export type SearchAlbumResponseResolvers<ContextType = any, ParentType extends ResolversParentTypes['SearchAlbumResponse'] = ResolversParentTypes['SearchAlbumResponse']> = {
@@ -719,6 +734,7 @@ export type Resolvers<ContextType = any> = {
   GetArtistResponse?: GetArtistResponseResolvers<ContextType>,
   GetArtistTopTracksResponse?: GetArtistTopTracksResponseResolvers<ContextType>,
   GetAuthorizationResponse?: GetAuthorizationResponseResolvers<ContextType>,
+  GetCurrentlyPlayingResponse?: GetCurrentlyPlayingResponseResolvers<ContextType>,
   GetTrackItemResponse?: GetTrackItemResponseResolvers<ContextType>,
   GetTrackResponse?: GetTrackResponseResolvers<ContextType>,
   GetTracksResponse?: GetTracksResponseResolvers<ContextType>,

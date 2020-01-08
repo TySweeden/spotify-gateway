@@ -27,7 +27,9 @@ const resolvers = {
         getAlbumTracks: res.getAlbumTracks,
 
         getTrackById: res.getTrackById,
-        getTracks: res.getTracks
+        getTracks: res.getTracks,
+
+        getCurrentlyPlaying: res.getCurrentlyPlaying
     }//,
     //Mutation: {}
 }
