@@ -12,7 +12,7 @@ export const getTracks = async (obj: any, { args }: { args: GetTracksInput }, co
                 'Authorization': `${context.req.headers.authorization}`
             }
         };
-
+        
         var tracks: Array<TrackItem> = [];
         const api = new TracksApi();
 

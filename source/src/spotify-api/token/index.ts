@@ -28,9 +28,9 @@ export const getAuthorization = async (authorizationRequest: any = { scopes: "us
     }).then(async (response) => {
         console.log(JSON.stringify(response));
         // will not work .. does not set the server request context
-        setTimeout(() => {
+        /*setTimeout(() => {
             getAuthorization();
-        }, response.expires_in * 1000);
+        }, response.expires_in * 1000);*/
 
         authResponse = response;
     }).catch(error => error);

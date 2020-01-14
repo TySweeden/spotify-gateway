@@ -8,8 +8,11 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm install
 
+COPY start.sh .
+RUN chmod +x start.sh
+
 COPY . /usr/src/app
 
-EXPOSE 4000
+EXPOSE 4200
 
-CMD [ "npm", "start" ]
+CMD ./start.sh && npm build && npm start

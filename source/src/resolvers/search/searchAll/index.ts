@@ -7,10 +7,13 @@ export const searchAll = async (obj: any, { args }: { args: SearchInput }, conte
         var options = {
             method: 'GET',
             headers: {
-              'Accept': 'application/json',
-              'Authorization': `${context.req.headers.authorization}`
+              'Accept': 'application/json'
             }
           };
+
+          _.assign(options.headers, context.req.headers);
+
+          console.log(options)
 
           const api = new SearchApi();
           
