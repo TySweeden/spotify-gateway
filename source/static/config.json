@@ -1,6 +1,6 @@
 {
-  "graphqlEndpoint": "http://13.86.59.245:8081/v1/graphql",
-  "graphqlWsEndpoint": "ws://13.86.59.245:8081/v1/graphql",
+  "graphqlEndpoint": "http://localhost:8081/v1/graphql",
+  "graphqlWsEndpoint": "ws://localhost:8081/v1/graphql",
   "tokenEndpoint": "https://accounts.spotify.com/api/token",
   "refreshTokenEndpoint": "https://accounts.spotify.com/api/refresh_token",
   "clientId": "2bbb76087b5a432ea862bd84e5ca5ae5", 

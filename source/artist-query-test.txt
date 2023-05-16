@@ -1,0 +1,23 @@
+{
+  searchArtist(args:{name:"aaaaaaaaaaaa", limit:10}) {
+    options,
+    data  {
+      href
+      items {
+        genres
+        href
+        id
+        name
+        popularity
+        type
+        uri
+      }
+      limit
+      next
+      offset
+      previous
+      total
+      }
+    }
+  
+}
